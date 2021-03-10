@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div>
+    {% extends "base.html" %}
+    {% block content %}
+        <style>
+            .table-responsive {
+                max-width: 800px;
+            }
+
+            body {
+                font-family: "Roboto", sans-serif;
+                font-size: 18px;
+                background-color: #fdfdfd;
+            }
+
+            .head_text {
+                color: white;
+            }
+
+            .card {
+                box-shadow: 0 16px 48px #E3E7EB;
+            }
+        </style>
+
+        <header class="masthead">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class=" col-md-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h3 class=" site-heading my-4 mt-3 text-white"> {{ details.name }} Details </h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <div style="alignment: left">
+
+         {% block ipo_nav %} {% include 'IPO_pages/ipo_nav.html' %} {% endblock %}
+        </div>
+        <div class="row">
+             <div class="col-md-6" style="margin-top: 40px;margin-right: 110px;margin-left: 90px;margin-bottom: 50px;">
+                <div class="card my-6">
+                        <h3 class="card-header">Company Profile</h3>
+                        <div class="card-body">
+                            <p>{{ details.content }}</p>
+                        </div>
+                </div>
+             </div>
+                {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+        </div>
+        {% if asset is not None%}
+        {% block Asset %} {% include 'IPO_pages/asset_block.html' %} {% endblock %}
+        {% endif %}
+        {% block info %} {% include 'IPO_pages/info_block.html' %} {% endblock %}
+
+        {% block tentative %} {% include 'IPO_pages/tantetive_date_block.html' %} {% endblock %}
+
+
+    {%endblock%}
+</div>
+
+
+</body>
+</html>

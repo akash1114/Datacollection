@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% block content %}
+        <style>
+            .table-responsive {
+                max-width: 700px;
+                max-height:300px;
+            }
+
+            body {
+                font-family: "Roboto", sans-serif;
+                font-size: 18px;
+                background-color: #fdfdfd;
+            }
+
+            .head_text {
+                color: white;
+            }
+
+            .card {
+                box-shadow: 0 16px 48px #E3E7EB;
+            }
+        </style>
+
+        <header class="masthead">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class=" col-md-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h3 class=" site-heading my-4 mt-3 text-white"> {{ details.name }} Subscription Info </h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        {% block ipo_nav %} {% include 'IPO_pages/ipo_nav.html' %} {% endblock %}
+    <div class="container" >
+            <div class="row">
+               <div class="col-md-8 mt-3">
+                <h3>{{ details.name }} Details</h3>
+                   <div class="card">
+                        <div class="card-body">
+                            <table id="dtVerticalScroll" class="table table-hover" >
+                                <tr>
+                                <th>Open</th>
+                                    <td>{{ details.open }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Close</th>
+                                    <td>{{ details.close }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Issue Type</th>
+                                    <td>{{ details.type }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Face Value</th>
+                                    <td>{{ details.face_value }}</td>
+                                    </tr>
+                                <tr>
+                                <th>IPO Price</th>
+                                    <td>{{ details.ipo_price }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Market Lot</th>
+                                    <td>{{ details.market_lot }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Listing At</th>
+                                    <td>{{ details.listing_at }}</td>
+                                    </tr>
+                                <tr>
+                           </table>
+                        </div>
+                    </div>
+
+               </div>
+                {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+            </div>
+    </div>
+       {% block tentative %} {% include 'IPO_pages/tantetive_date_block.html' %} {% endblock %}
+      <div class="container">
+      <div class="row">
+        <div class="col-md-6 mt-3">
+          {% if allotment_data.link == None %}
+                <div style="margin-top: 40px;color: brown">
+                    <p> Allotment Data is not Available right now...</p>
+                </div>
+            {% else %}
+          <div class="row" style="padding-left:500px;padding-top:50px;padding-bottom:50px;text-align:center;">
+            <a href={{ allotment_data.link }}>
+                <b>{{ details.name }} Allotment Status</b>
+            </a>
+
+          </div>
+        </div>
+      {% endif %}
+        </div>
+      </div>
+    {% endblock %}
+
+</body>
+</html>

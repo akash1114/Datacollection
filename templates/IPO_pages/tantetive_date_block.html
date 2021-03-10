@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     {% block tentative %}
+        {% if dates is not None %}
+          <div class="container">
+            <div class="row">
+                   <div class="col-md-6 mt-3">
+                    <h3>{{ details.name }} Schedule</h3>
+                       <div class="card">
+                            <div class="card-body">
+                                <table id="dtVerticalScroll" class="table table-hover" >
+                                    <tr>
+                                        <th>Open on</th>
+                                        <td>{{ details.open }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Close on</th>
+                                        <td>{{ details.close }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Basis of Allotment</th>
+                                        <td>{{ dates.basic_of_allotment }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Initiation of refunds</th>
+                                        <td>{{ dates.initiation_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Credit of Equity Shares</th>
+                                        <td>{{ dates.credit_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Listing Date</th>
+                                        <td>{{ dates.listing_date }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                       </div>
+                   </div>
+            </div>
+          </div>
+      {% endif %}
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% block info %}
+        <div class="container" >
+            <div class="row">
+               <div class="col-md-8 mt-3">
+                <h3>{{ details.name }} Details</h3>
+                   <div class="card">
+                        <div class="card-body">
+                            <table id="dtVerticalScrollExample" class="table table-hover table-responsive" >
+                                <tr>
+                                <th>Open</th>
+                                    <td>{{ details.open }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Close</th>
+                                    <td>{{ details.close }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Issue Type</th>
+                                    <td>{{ details.type }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Face Value</th>
+                                    <td>{{ details.face_value }}</td>
+                                    </tr>
+                                <tr>
+                                <th>IPO Price</th>
+                                    <td>{{ details.ipo_price }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Market Lot</th>
+                                    <td>{{ details.market_lot }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Listing At</th>
+                                    <td>{{ details.listing_at }}</td>
+                                    </tr>
+                                <tr>
+                                <th>Issue Size</th>
+                                    <td>{{ details.issue_size }}</td>
+                                    </tr>
+
+                           </table>
+                        </div>
+                    </div>
+
+               </div>
+
+            </div>
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+{% load static %}
+{% load crispy_forms_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block comment %}
+    <div class="container">
+        <div class="replybutton btn4 like" style="">
+            <span class="btn reply" id="replay" onclick="show()">Reply</span> •&emsp;
+          </div>
+
+        <div id="display" class="col-lg-12 reply" style="display:none">
+            {% for replay in comment.replies.all %}
+                <p class="info">{{ replay.user }} | {{ replay.created.date }}</p>
+                <li>{{ replay.body }}</li>
+            {% endfor %}
+
+            <h5>Replay</h5>
+            <form action=" " method="post">
+                {{ comment_form|crispy }}
+                {% csrf_token %}
+                <!-- Hidden input for parent comment.id -->
+                <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                <input class="btn btn-primary" type="submit" value="Replay">
+            </form>
+        </div>
+    </div>
+        <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+            <script>
+                function show(){
+                          var x = document.getElementById('display');
+                          if (x.style.display === 'none') {
+                            x.style.display = 'block';
+                          } else {
+                            x.style.display = 'none';
+                          }
+                 }
+                    $(document).ready(function() {
+                          $('.replybutton').click(function() {
+                            $(this).next('.reply').toggle();
+                          });
+                        });
+                </script>
+    {% endblock %}
+</body>
+</html>

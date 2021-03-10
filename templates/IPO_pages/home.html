@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div>
+    {% extends "base.html" %}
+    {% block content %}
+        <style>
+            .table-responsive {
+                max-width: 700px;
+                max-height:300px;
+            }
+
+            body {
+                font-family: "Roboto", sans-serif;
+                font-size: 18px;
+                background-color: #fdfdfd;
+            }
+
+            .head_text {
+                color: white;
+            }
+
+            .card {
+                box-shadow: 0 16px 48px #E3E7EB;
+            }
+        </style>
+        <header class="masthead">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class=" col-md-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h3 class=" site-heading my-4 mt-3 text-white"> All IPOs info </h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container" >
+            <div class="row">
+               <div class="col-md-8 mt-3 left">
+                <h3>Mainboard IPOs</h3>
+                   <div class="card mb-4">
+                        <div class="card-body">
+                            <table id="dtVerticalScrollExample" class="table table-hover table-responsive" >
+                            <th>Company Name</th>
+                            <th>Open</th>
+                            <th>Close</th>
+                            <th>Status</th>
+                            {% for company in mainboard %}
+                                <tr>
+                                    <td><a href="/ipoinfo?company_id={{ company.pk }}">{{ company.name }}</a></td>
+                                    <td>{{ company.open }}</td>
+                                    <td>{{ company.close }}</td>
+                                    <td>{{ company.status }}</td>
+
+                                </tr>
+                            {% endfor %}
+                           </table>
+                        </div>
+                    </div>
+
+               </div>
+                {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+            </div>
+        <div class="container" >
+            <div class="row">
+               <div class="col-md-8 mt-3 left">
+                <h3>SME IPOs</h3>
+                   <div class="card mb-4">
+                        <div class="card-body">
+                            <table id="dtVerticalScrollExample" class="table table-hover table-responsive" >
+                            <th>Company Name</th>
+                            <th>Open</th>
+                            <th>Close</th>
+                            <th>Status</th>
+                            {% for company in sme %}
+                                <tr>
+                                    <td><a href="/ipoinfo?company_id={{ company.pk }}">{{ company.name }}</a></td>
+                                    <td>{{ company.open }}</td>
+                                    <td>{{ company.close }}</td>
+                                    <td>{{ company.status }}</td>
+                                </tr>
+                            {% endfor %}
+                           </table>
+                        </div>
+                    </div>
+               </div>
+
+            </div>
+
+    {%endblock%}
+</div>
+
+    </div>
+</div>
+</body>
+</html>

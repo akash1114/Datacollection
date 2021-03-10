@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block Asset %}
+    <div class="container" >
+            <div class="row">
+               <div class="col-md-8 mt-3" style="margin-left: 0px">
+                <h3>Company Financials: </h3>
+                   <div class="card">
+                        <div class="card-body">
+                            <table id="dtVerticalScrollExample" class="table table-hover table-responsive" >
+                                <tr>
+                                    <th>Particulars</th>
+                                    <th colspan="4">For the year/period ended (₹ in millions)</th>
+                                </tr>
+                                <tr>
+                                    <th>
+
+                                    </th>
+                                    {% for i in asset %}
+                                        <th>
+                                            {{ i.date }}
+                                        </th>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <th>Total Assets</th>
+                                    {% for i in asset %}
+                                        <td>
+                                            {{ i.total_asset }}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <th>Total Revenue</th>
+                                    {% for i in asset %}
+                                        <td>
+                                            {{ i.total_revenue }}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <th>Profit After Tax</th>
+                                    {% for i in asset %}
+                                        <td>
+                                            {{ i.profit }}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                           </table>
+                        </div>
+                    </div>
+
+               </div>
+
+            </div>
+    {% endblock %}
+</body>
+</html>

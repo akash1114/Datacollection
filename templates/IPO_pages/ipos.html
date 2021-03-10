@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<div>
+<div>
+    {% extends "base.html" %}
+    {% block content %}
+        <style>
+            .table-responsive {
+                max-width: 800px;
+            }
+
+            body {
+                font-family: "Roboto", sans-serif;
+                font-size: 16px;
+                background-color: #fdfdfd;
+            }
+
+            .head_text {
+                color: white;
+            }
+
+            .card {
+                box-shadow: 0 16px 48px #E3E7EB;
+            }
+        </style>
+        <header class="masthead">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class=" col-md-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h3 class=" site-heading my-4 mt-3 text-white"> All IPOs info </h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="row">
+               <div class="col-md-8 mt-3" style="margin-left: 0px">
+                <h3>{{ name }} IPOs</h3>
+                   <div class="card">
+                        <div class="card-body">
+                            <table id="dtVerticalScrollExample" class="table table-hover" >
+                            <th>Company Name</th>
+                            <th>Exchange</th>
+                            <th>Open</th>
+                            <th>Close</th>
+                            <th>Lot Size</th>
+                            <th>Issue Price</th>
+                            <th>Issue Size(In cr.)</th>
+                            {% for company in data %}
+                                <tr>
+                                    <td><a href="/ipoinfo?company_id={{ company.pk }}">{{ company.name }}</a></td>
+                                    <td>{{ company.listing_at }}</td>
+                                    <td>{{ company.open }}</td>
+                                    <td>{{ company.close }}</td>
+                                    <td>{{ company.market_lot }}</td>
+                                    <td>{{ company.ipo_price }}</td>
+                                    <td>{{ company.issue_size }}</td>
+                                </tr>
+                            {% endfor %}
+                           </table>
+                        </div>
+                    </div>
+               </div>
+
+                    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+
+            </div>
+
+        {%endblock%}
+    </div>
+
+</div>
+
+</body>
+</html>

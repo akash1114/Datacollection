@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block ipo_nav %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav">
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="/ipoinfo?company_id={{ details.id }}">Details</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="/subscription?company_id={{ details.id }}">Subscription</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="/allotment?company_id={{ details.id }}">Allotment</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    {% endblock %}
+</body>
+</html>

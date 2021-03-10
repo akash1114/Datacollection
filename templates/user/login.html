@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+    {% block content %}
+
+
+        {% load crispy_forms_tags %}
+
+        <!--Login-->
+
+        <div class="col-md-4" style="margin-left: 500px;">
+        <div class="card my-4">
+                <h3 class="card-header">Login</h3>
+                <div class="card-body">
+                    <form method="POST">
+                    {% csrf_token %}
+                    {{ login_form|crispy }}
+                    <button class="btn btn-primary" type="submit">Login</button>
+                    </form>
+                    <p class="text-center">Don't have an account? <a href={% url 'register' %}>Create an account</a>.</p>
+                </div>
+        </div>
+        </div>
+
+
+        {% endblock %}
+
+</body>
+</html>

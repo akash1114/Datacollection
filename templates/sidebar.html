@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     {% block sidebar %}
+
+        <style>
+                .card{
+                    box-shadow: 0 16px 48px #E3E7EB;
+                }
+
+        </style>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4 float-right ">
+        <div class="card my-4">
+                <h5 class="card-header">IPO Information</h5>
+            <div class="card-body">
+                   <a href={% url 'home' %}
+                   class="btn">All IPOs</a><br/>
+                <a href={% url 'mainboard' %}
+                   class="btn">Mainboard IPO</a><br/>
+                <a href= {% url 'sme' %}
+                   class="btn">SME IPO</a>
+            </div>
+        </div>
+        </div>
+
+        {% endblock sidebar %}
+</body>
+</html>
